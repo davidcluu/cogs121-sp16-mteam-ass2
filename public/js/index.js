@@ -8,7 +8,7 @@
     "WHERE c.year = 2003"
   ];
 
-  d3.json(generateQueryURL('/delphidata/q1', query), function(err, data) {
+  d3.json(generateQueryURL('/delphidata', query), function(err, data) {
     if (err) {
       console.error(err);
       return;

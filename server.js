@@ -28,7 +28,13 @@ client.connect(function(err) {
 /* Router */
 var router = {
   index: require('./routes/index'),
-  db: require('./routes/db')
+  db: {
+    setup: function(req,res,next) {
+      req.dbclient = client;
+      next();
+    },
+    access: require('./routes/db')
+  }
 };
 
 
@@ -51,11 +57,8 @@ app.set('port', process.env.PORT || 3000);
 /* Routes */
 app.get('/', router.index.view);
 
-app.get('/delphidata/*', function(req,res,next) {
-  req.dbclient = client;
-  next();
-});
-app.get('/delphidata/q1', router.db.query);
+app.use('/delphidata', router.db.setup);
+app.get('/delphidata', router.db.access.query);
 
 
 /* Listen on port */
