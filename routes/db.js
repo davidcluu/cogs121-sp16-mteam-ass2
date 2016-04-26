@@ -22,7 +22,7 @@ exports.query = function (req, res) {
 
   function queryize (queryArr) {
     return queryArr
-      .map((s) => s + ' ')
-      .reduce((p,c) => p+c)
+      .map(function(s) { return s + ' '; })
+      .reduce(function(p,c) { return p+c; })
   }
 }

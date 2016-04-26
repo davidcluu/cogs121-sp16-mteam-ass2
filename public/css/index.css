@@ -1,1 +1,12 @@
+body {
+  background-color: #000
+}
 
+#map {
+  text-align: center;
+}
+
+.neighborhood {
+  stroke: white;
+  stroke-width: 0.50px;
+}

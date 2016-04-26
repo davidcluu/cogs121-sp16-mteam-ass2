@@ -1,11 +1,12 @@
+/* On Ready */
 (function(d3) {
-  "use strict";
+  'use strict';
 
   /* Query strings sorted in an array */
   var query = [
-    "SELECT gender, number_of_respondents",
-    "FROM cogs121_16_raw.cdph_smoking_prevalence_in_adults_1984_2013 AS c",
-    "WHERE c.year = 2003"
+    'SELECT gender, number_of_respondents',
+    'FROM cogs121_16_raw.cdph_smoking_prevalence_in_adults_1984_2013 AS c',
+    'WHERE c.year = 2003'
   ];
 
   d3.json(generateQueryURL('/delphidata', query), function(err, data) {

@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var dotenv = require('dotenv');
 var pg = require('pg');
+
+
+/* App */
 var app = express();
 
 
@@ -20,7 +23,7 @@ var conString = process.env.DATABASE_CONNECTION_URL;
 var client = new pg.Client(conString);
 client.connect(function(err) {
   if(err) {
-    console.error("DB Error: Could not connect to database");
+    console.error('DB Error: Could not connect to database');
   }
 });
 
@@ -40,7 +43,7 @@ var router = {
 
 /* HTML Template */
 app.engine('html', handlebars({ defaultLayout: 'layout', extname: '.html' }));
-app.set("view engine", "html");
+app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
