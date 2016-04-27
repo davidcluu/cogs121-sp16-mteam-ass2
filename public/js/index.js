@@ -36,11 +36,7 @@
     var keys = Object.keys(map);
 
     for (var i in keys) {
-      var currZipCode = keys[i];
-
-      asyncQuery(currZipCode);
-
-      function asyncQuery(currZipCode) {
+      (function (currZipCode) {
         var query = [
           "SELECT COUNT(*)",
           "FROM cogs121_16_raw.arjis_crimes AS c",
@@ -55,7 +51,7 @@
 
           console.log(map[currZipCode] + " - " + data[0].count);
         });
-      }
+      })(keys[i]);
     }
   });
 })(d3);
