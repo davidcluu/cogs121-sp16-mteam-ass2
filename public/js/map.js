@@ -54,9 +54,7 @@ d3.json('/data/sd.json', function (err, sd) {
       .data(sdgeo.features)
       .enter().append('path')
       .attr('d', path)
-      .attr('class', function(d) {
-        return 'neighborhood ' + d.properties.name;
-      })
+      .attr('class', handleClass)
       .style('fill', handleFill)
 
 
@@ -65,6 +63,13 @@ d3.json('/data/sd.json', function (err, sd) {
     //console.log(data);
   });
 });
+
+
+function handleClass(d) {
+  var name = d.properties.name.replace(/\s+/g, '-').toLowerCase();
+
+  return 'neighborhood ' + name;
+}
 
 
 function handleFill(d) {
