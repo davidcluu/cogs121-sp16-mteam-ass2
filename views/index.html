@@ -1,61 +1,77 @@
 <!-- nav bar -->
 <nav class="navbar navbar-light bg-faded">
-	<a class="navbar-brand" href="#">SAYFR</a>
-	<ul class="nav navbar-nav navbar-right">
-		<li class="nav-item active">
-		 	<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="#about">About</a>
-		</li>
-		<li class="nav-item ">
-			<a class="nav-link" href="/citysearch">Map</a>
-		</li>
-	</ul>
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">SAYFR</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="/citysearch">Map</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
 </nav>
 <!-- end nav bar -->
 
 <!--header-->
 <div class="container">
 	<div class="header">
+		<video autoplay="" loop="" muted="" style="width: 100%;">
+			<source src="/img/sandiego.mp4" type="video/mp4">
+		</video>
+		<div class="video-top">
 		<div class="slogan">
-			<p>Find out if your rent is dangerously low.</p>
+			<p>Find out if you're living dangerously.</p>
 		</div>
 
 		<div class="search-box">
-	        <form class="form-search">
-	        <div class="input-group">
-	            <input type="text" class="form-control" placeholder="Search for Cities in SD County" name="srch-term" id="srch-term">
-	            <div class="input-group-btn">
-	                <button class="btn btn-default" type="submit">Go</button>
-	            </div>
-	        </div>
-	        </form>
+			<form class="form-search">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Search for Neighborhoods San Diego" name="srch-term" id="srch-term">
+					<div class="input-group-btn">
+						<button class="btn btn-default" type="submit">Find a City</button>
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
+	</div>
 </div>
-<!--header-->
+	<!--header-->
 
-<!--about-->
-
-<div id="about">
-	<div class="container">
+	<!--about-->
+	<div id="about">
+		<div class="container">
 		<div class="row no-gutters">
-			<div class="col-sm-8">
-				<div class="left-side">
-					<img src="/img/landing-about.jpeg" >
+			<div class="col-sm-5 left-side">
+				<div class="about-description">
+					<h2>With SAYFR, Know Exactly What You're Paying For.</h2>
+					<br/>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+						dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+					<button class="btn btn-primary">Find a City</button>
 				</div>
 			</div>
-			<div class="col-sm-4 right-side">
-				<div class="about-description">
-					<h3>Know What You're Paying For</h3>
-					<br>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+			<div class="col-sm-7">
+				<div class="right-side">
+					<img src="/img/landing-about.jpeg">
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 
+<footer>&copy; Team M, 2016.</footer>
 
 <script src="/js/index.js"></script>
