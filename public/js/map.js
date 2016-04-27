@@ -115,6 +115,7 @@ $.getJSON('/data/sd.json', function(sd) {
             });
         })(keys[i], name);
       }
+      $('.loader').toggleClass('loaded');
     }
   });
 });
