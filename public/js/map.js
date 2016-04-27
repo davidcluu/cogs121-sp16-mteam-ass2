@@ -45,22 +45,71 @@ d3.json('/data/sd.json', function (err, sd) {
 
 
   /* Draw the neighborhood objects */
-  svg.append('path')
-      .datum(sdgeo)
-      .attr('d', path)
-      .attr('transform', 'translate(' + margin + ',' + margin + ')');
-
   svg.selectAll('.neighborhood')
       .data(sdgeo.features)
       .enter().append('path')
       .attr('d', path)
       .attr('class', handleClass)
-      .style('fill', handleFill)
+      .style('fill', '#aaa')
 
+  d3.json('/data/neighborhoodToZipcode.json', function(err, map) {
+    var keys = Object.keys(map);
 
-  /* Load zipcode to neighborhood mapper */
-  $.getJSON('/data/zipcodeToNeighborhood.json', function(data){
-    //console.log(data);
+    var neighborhoodsCounted = 0;
+    var crimes = {};
+
+    for (var i in keys) {
+      (function (currNeighborhood) {
+        var zipCodesCounted = 0;
+        var totalCrimes = 0;
+
+        for (var j in map[keys[i]]) {
+          (function (currZipCode) {
+            var query = [
+              "SELECT COUNT(*)",
+              "FROM cogs121_16_raw.arjis_crimes AS c",
+              "WHERE c.zip LIKE '" + currZipCode + "'"
+            ];
+
+            d3.json(generateQueryURL('/delphidata', query), function(err, data) {
+              if (err) {
+                console.error(err);
+                return;
+              }
+
+              zipCodesCounted = zipCodesCounted + 1;
+              totalCrimes = totalCrimes + parseInt(data[0].count);
+
+              if(zipCodesCounted == map[currNeighborhood].length) {
+                crimes[currNeighborhood] = totalCrimes;
+                neighborhoodsCounted = neighborhoodsCounted + 1;
+
+                if (neighborhoodsCounted == keys.length) {
+                  setClick(crimes);
+                }
+              }
+            });
+          })(map[keys[i]][j]);
+        }
+      })(keys[i]);
+    }
+
+    function setClick(crimes) {
+      for (var i in keys) {
+        var name = keys[i].replace(/\s+/g, '-').toLowerCase();
+
+        (function (displayName, className) {
+          $('.neighborhood.' + className)
+            .click(function(e) {
+              console.log(displayName + " " + crimes[displayName]);
+            })
+            .css({
+              fill: "rgba(255,0,255," + (crimes[displayName] / 5000) + ")",
+              transition: "2.0s"
+            });
+        })(keys[i], name);
+      }
+    }
   });
 });
 
