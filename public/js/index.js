@@ -4,22 +4,59 @@
 
   /* Query strings sorted in an array */
   var query = [
-    'SELECT gender, number_of_respondents',
-    'FROM cogs121_16_raw.cdph_smoking_prevalence_in_adults_1984_2013 AS c',
-    'WHERE c.year = 2003'
+    "SELECT COUNT(*)",
+    "FROM cogs121_16_raw.arjis_crimes AS c",
+    "WHERE NOT(c.zip LIKE '')"
   ];
 
   d3.json(generateQueryURL('/delphidata', query), function(err, data) {
+    console.log(data);
     if (err) {
       console.error(err);
       return;
     }
 
-    var sortedData = data.sort(function(a, b) {
-      return a.gender.charCodeAt(0) - b.gender.charCodeAt(0);
-    });
+    d3.json('/data/zipcodeToNeighborhood.json', function(err, map) {
+      if (err) {
+        console.error(err);
+        return;
+      }
 
-    console.log(sortedData);
+      console.log();
+
+      data.forEach(function(data){
+        if (map[data.zip]) {
+
+        }
+      });
+    });
+  });
+
+  d3.json('/data/zipcodeToNeighborhood.json', function(err, map) {
+    var keys = Object.keys(map);
+
+    for (var i in keys) {
+      var currZipCode = keys[i];
+
+      asyncQuery(currZipCode);
+
+      function asyncQuery(currZipCode) {
+        var query = [
+          "SELECT COUNT(*)",
+          "FROM cogs121_16_raw.arjis_crimes AS c",
+          "WHERE c.zip LIKE '" + currZipCode + "'"
+        ];
+
+        d3.json(generateQueryURL('/delphidata', query), function(err, data) {
+          if (err) {
+            console.error(err);
+            return;
+          }
+
+          console.log(map[currZipCode] + " - " + data[0].count);
+        });
+      }
+    }
   });
 })(d3);
 

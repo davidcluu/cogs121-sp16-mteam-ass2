@@ -62,7 +62,7 @@ d3.json('/data/sd.json', function (err, sd) {
 
   /* Load zipcode to neighborhood mapper */
   $.getJSON('/data/zipcodeToNeighborhood.json', function(data){
-    console.log(data);
+    //console.log(data);
   });
 });
 
