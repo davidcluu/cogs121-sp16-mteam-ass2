@@ -103,3 +103,21 @@ function handleFill(d) {
     }
   }
 }
+
+/*
+  subplaces = topojson.feature(sd, sd.objects.neighborhoods);
+
+  var projection = d3.geo.mercator();
+  var path = d3.geo.path().projection(projection);
+
+  var features = subplaces.features;
+  for (var i = 0; i < features.length; i++) {
+      var feat = features[i];
+      
+      // calculate the centroid (which is in pixels) and then invert back to lat/long
+      var centroid = projection.invert(path.centroid(feat));
+
+      // output: id, long, lat
+      console.log('{name: "' + feat.properties.name + '", centroid:[' + centroid[1] + ', ' + centroid[0] + ']},');
+  }
+*/
