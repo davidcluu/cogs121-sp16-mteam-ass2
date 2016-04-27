@@ -1,5 +1,5 @@
-var parentWidth = window.innerWidth,
-    parentHeight = window.innerHeight;
+var parentWidth = $('#map').width(),
+    parentHeight = window.innerHeight - ($('.navbar').height() / 2);
 
 var margin = ((parentWidth > parentHeight) ? parentWidth : parentHeight) / 25,
     width = parentWidth - (2 * margin),
@@ -19,7 +19,7 @@ d3.json('/data/sd.json', function (err, sd) {
   /* Calculate the center of sd, guess scale and offset */
   var center = d3.geo.centroid(sdgeo);
   var scale = 150;
-  var offset = [width/2, height/2];
+  var offset = [width/2, height/2 - ($('.navbar').height() / 2)];
   var projection = d3.geo.mercator()
                       .scale(scale)
                       .center(center)
@@ -50,7 +50,7 @@ d3.json('/data/sd.json', function (err, sd) {
       .enter().append('path')
       .attr('d', path)
       .attr('class', handleClass)
-      .style('fill', '#aaa')
+      .style('fill', '#e8e8e8')
 
   d3.json('/data/neighborhoodToZipcode.json', function(err, map) {
     var keys = Object.keys(map);
@@ -99,13 +99,19 @@ d3.json('/data/sd.json', function (err, sd) {
         var name = keys[i].replace(/\s+/g, '-').toLowerCase();
 
         (function (displayName, className) {
+          var ratio = crimes[displayName] / 5000;
+
+          var r = Math.floor( 255 * (ratio) + 250 * (1.0-ratio) );
+          var g = Math.floor( 0   * (ratio) + 237 * (1.0-ratio) );
+          var b = Math.floor( 255 * (ratio) + 250 * (1.0-ratio) );
+
           $('.neighborhood.' + className)
             .click(function(e) {
-              console.log(displayName + " " + crimes[displayName]);
+              console.log(displayName + ' ' + crimes[displayName]);
             })
             .css({
-              fill: "rgba(255,0,255," + (crimes[displayName] / 5000) + ")",
-              transition: "2.0s"
+              fill: 'rgb(' + r + ',' + g + ',' + b + ')',
+              transition: '2.0s'
             });
         })(keys[i], name);
       }
