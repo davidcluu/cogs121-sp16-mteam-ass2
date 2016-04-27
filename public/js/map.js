@@ -51,6 +51,7 @@ d3.json('/data/sd.json', function (err, sd) {
       .attr('d', path)
       .attr('class', handleClass)
       .style('fill', '#e8e8e8')
+      .style('cursor', 'not-allowed');
 
   d3.json('/data/neighborhoodToZipcode.json', function(err, map) {
     var keys = Object.keys(map);
@@ -63,7 +64,7 @@ d3.json('/data/sd.json', function (err, sd) {
         var zipCodesCounted = 0;
         var totalCrimes = 0;
 
-        for (var j in map[keys[i]]) {
+        for (var j in map[keys[i]].zipcodes) {
           (function (currZipCode) {
             var query = [
               "SELECT COUNT(*)",
@@ -80,7 +81,7 @@ d3.json('/data/sd.json', function (err, sd) {
               zipCodesCounted = zipCodesCounted + 1;
               totalCrimes = totalCrimes + parseInt(data[0].count);
 
-              if(zipCodesCounted == map[currNeighborhood].length) {
+              if(zipCodesCounted == map[currNeighborhood].zipcodes.length) {
                 crimes[currNeighborhood] = totalCrimes;
                 neighborhoodsCounted = neighborhoodsCounted + 1;
 
@@ -89,7 +90,7 @@ d3.json('/data/sd.json', function (err, sd) {
                 }
               }
             });
-          })(map[keys[i]][j]);
+          })(map[keys[i]].zipcodes[j]);
         }
       })(keys[i]);
     }
@@ -108,6 +109,9 @@ d3.json('/data/sd.json', function (err, sd) {
           $('.neighborhood.' + className)
             .click(function(e) {
               console.log(displayName + ' ' + crimes[displayName]);
+            })
+            .css({
+              cursor: 'pointer'
             })
             .css({
               fill: 'rgb(' + r + ',' + g + ',' + b + ')',
