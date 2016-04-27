@@ -10,7 +10,7 @@ var svg = d3.select('#map').append('svg')
     .attr('height', height + margin);
 
 
-d3.json('/data/sd.json', function (err, sd) {
+$.getJSON('/data/sd.json', function (err, sd) {
   if(err) console.error(err);
 
   /* Retrieve features from the sd object */
@@ -53,7 +53,7 @@ d3.json('/data/sd.json', function (err, sd) {
       .style('fill', '#e8e8e8')
       .style('cursor', 'not-allowed');
 
-  d3.json('/data/neighborhoodToZipcode.json', function(err, map) {
+  $.getJSON('/data/neighborhoodToZipcode.json', function(err, map) {
     var keys = Object.keys(map);
 
     var neighborhoodsCounted = 0;
@@ -72,7 +72,7 @@ d3.json('/data/sd.json', function (err, sd) {
               "WHERE c.zip LIKE '" + currZipCode + "'"
             ];
 
-            d3.json(generateQueryURL('/delphidata', query), function(err, data) {
+            $.getJSON(generateQueryURL('/delphidata', query), function(err, data) {
               if (err) {
                 console.error(err);
                 return;
