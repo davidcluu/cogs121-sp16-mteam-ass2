@@ -107,8 +107,11 @@ d3.json('/data/sd.json', function (err, sd) {
           var b = Math.floor( 255 * (ratio) + 250 * (1.0-ratio) );
 
           $('.neighborhood.' + className)
-            .click(function(e) {
+            .click(function() {
               console.log(displayName + ' ' + crimes[displayName]);
+              $.getJSON('/data/neighborhoodToZipcode.json', function(data) {
+                console.log(data[displayName]);
+              });
             })
             .css({
               cursor: 'pointer'
