@@ -45,10 +45,6 @@ d3.json('/data/sd.json', function (err, sd) {
 
 
   /* Draw the neighborhood objects */
-  svg.append('path')
-      .datum(sdgeo)
-      .attr('d', path)
-      .attr('transform', 'translate(' + margin + ',' + margin + ')');
 
   svg.selectAll('.neighborhood')
       .data(sdgeo.features)

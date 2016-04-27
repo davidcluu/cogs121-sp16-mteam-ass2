@@ -1,12 +1,89 @@
 body {
-  background-color: #000
+  background-color: #EDEDED;
 }
 
+/*map stuff*/
+
 #map {
-  text-align: center;
+	float: right;
 }
 
 .neighborhood {
   stroke: white;
   stroke-width: 0.50px;
+}
+
+/*navbar stuff*/
+.navbar {
+	background-color: white;
+	border-radius: 0px;
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+	margin-bottom: 0;
+}
+
+/*index stuff*/
+
+.container {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+.row.no-gutters > [class^="col-"],
+.row.no-gutters > [class*=" col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.header {
+	background-color: #73C9E6;
+	height: 450px;
+}
+
+.slogan {
+	position: relative;
+	padding-top: 150px;
+}
+
+.slogan p {
+	color: #fff;
+	font-size: 40px;
+	text-align: center;
+}
+.search-box {
+	position: relative;
+	text-align: center;
+	margin: 0 auto;
+	width: 400px;
+}
+
+#about {
+	padding: 5% 15%;
+}
+
+
+#about img {
+	width: 100%;
+	float: right;
+}
+
+.row {
+	background-color: #fff;
+}
+
+.about-description {
+	padding-top: 25%;
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+
+/*city search*/
+.zip-codes {
+	width: 50%;
+	margin: 0 auto;
 }

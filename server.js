@@ -31,6 +31,7 @@ client.connect(function(err) {
 /* Router */
 var router = {
   index: require('./routes/index'),
+  citysearch: require('./routes/citysearch'),
   db: {
     setup: function(req,res,next) {
       req.dbclient = client;
@@ -59,6 +60,7 @@ app.set('port', process.env.PORT || 3000);
 
 /* Routes */
 app.get('/', router.index.view);
+app.get('/citysearch', router.citysearch.view);
 
 app.use('/delphidata', router.db.setup);
 app.get('/delphidata', router.db.access.query);
