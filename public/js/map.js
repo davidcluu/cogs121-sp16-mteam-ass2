@@ -10,7 +10,7 @@ var svg = d3.select('#map').append('svg')
     .attr('height', height + margin);
 
 
-d3.json('/map/sd.json', function (err, sd) {
+d3.json('/data/sd.json', function (err, sd) {
   if(err) console.error(err);
 
   /* Retrieve features from the sd object */
@@ -48,16 +48,22 @@ d3.json('/map/sd.json', function (err, sd) {
   svg.append('path')
       .datum(sdgeo)
       .attr('d', path)
-      .attr("transform", "translate(" + margin + "," + margin + ")");
+      .attr('transform', 'translate(' + margin + ',' + margin + ')');
 
   svg.selectAll('.neighborhood')
       .data(sdgeo.features)
       .enter().append('path')
       .attr('d', path)
       .attr('class', function(d) {
-        return 'neighborhood';
+        return 'neighborhood ' + d.properties.name;
       })
       .style('fill', handleFill)
+
+
+  /* Load zipcode to neighborhood mapper */
+  $.getJSON('/data/zipcodeToNeighborhood.json', function(data){
+    console.log(data);
+  });
 });
 
 
