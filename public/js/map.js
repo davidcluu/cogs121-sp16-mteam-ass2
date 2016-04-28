@@ -142,16 +142,47 @@ function changeNeighborhoods(displayName, crimes) {
     $('#neighborhood').text(displayName);
 
     var data = map[displayName];
+    var housePrices;
     if (data) {
       if (data.cost == -1) {
+        housePrices = [
+          {
+            cost: '0',
+            locality: displayName
+          },
+          {
+            cost: "567950",
+            locality: "San Diego"
+          }
+        ]
         $('#cost').html("No house cost information for " + displayName + "!");
       }
       else {
         $('#cost').html("<strong>House Cost:</strong> $" + data.cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        housePrices = [
+          {
+            cost: data.cost.toString(),
+            locality: displayName
+          },
+          {
+            cost: "567950",
+            locality: "San Diego"
+          }
+        ]
       }
     }
     else {
-      console.error("No information about " + displayName); 
+      console.error("No information about " + displayName);
+      housePrices = [
+        {
+          cost: '0',
+          locality: displayName
+        },
+        {
+          cost: "567950",
+          locality: "San Diego"
+        }
+      ]
     }
 
     $('#crime').html("<strong>Total Crimes:</strong> " + crimes);
@@ -173,7 +204,8 @@ function changeNeighborhoods(displayName, crimes) {
     query.push("GROUP BY zip");
 
     $.getJSON(generateQueryURL('/delphidata', query), function(data) {
-      updateChart(data, '#zipcode-crime');
+      updateCrimeChart(data, '#zipcode-crime');
+      updateHouseChart(housePrices, '#houseprices');
     });
   });
 }
@@ -224,14 +256,15 @@ function handleFill(d) {
 }
 
 
-function updateChart (data, id) {
+function updateCrimeChart (data, id) {
   $(id).empty();
+  $(id + '-label').empty();
 
   var range = d3.max( data.map(function(d){ return parseInt(d.count); }) ) + 100;
 
   var margin = {top: 0, right: 0, bottom: 50, left: 60},
       width = $('#crime').width() - margin.right - margin.left,
-      height = ($(window).height() - $('#zipcode-crime').position().top) / 2.1 - margin.top - margin.bottom;
+      height = ($(window).height() - $('#zipcode-crime').position().top) / 2.5 - margin.top - margin.bottom;
 
   var innerWidth  = width  - margin.left - margin.right;
   var innerHeight = height - margin.top  - margin.bottom;
@@ -280,4 +313,66 @@ function updateChart (data, id) {
   chart
     .append("g")
       .call(yAxis);
+
+  $(id + '-label').html('<h2 style="text-align: center; font-weight: bold; text-decoration: underline;">Zip Code vs. Crimes Committed</h2>');
+}
+
+function updateHouseChart (data, id) {
+  $(id).empty();
+
+  var range = d3.max( data.map(function(d){ return parseInt(d.cost); }) ) + 50000;
+
+  var margin = {top: 0, right: 0, bottom: 50, left: 60},
+      width = $('#crime').width() - margin.right - margin.left,
+      height = ($(window).height() - $('#zipcode-crime').position().top) / 2.5 - margin.top - margin.bottom;
+
+  var innerWidth  = width  - margin.left - margin.right;
+  var innerHeight = height - margin.top  - margin.bottom;
+
+  var xScale = d3.scale.ordinal().rangeRoundBands([0, innerWidth], 0);
+  var yScale = d3.scale.linear().range([0, innerHeight]);
+
+  var chart = d3
+                .select(id)
+                .append("svg")
+                .attr("width", width + margin.right + margin.left)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", "translate(" +  margin.left + "," + margin.right + ")");
+
+  xScale.domain( data.map(function (d){ return d.locality; }) );
+
+  yScale.domain([range,0]);
+  
+  chart
+    .selectAll(".bar")
+    .data(data.map(function(d){ return d.cost; }))
+    .enter().append("rect")
+    .attr("class", "bar")
+    .attr("x", function(d, i) { return ((innerWidth / data.length)*i) + 5; })
+    .attr("width", (innerWidth / data.length) - 10)
+    .attr("y", function(d) { return innerHeight - (innerHeight*(d / range)); })
+    .attr("height", function(d) { return innerHeight*(d / range); })
+    .style("fill", "#aaa");
+
+  var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+  var yAxis = d3.svg.axis().scale(yScale).orient("left");
+
+  chart
+    .append("g")
+      .attr("transform", "translate(" + 0 + "," + innerHeight + ")")
+      .call(xAxis)
+    .selectAll("text")
+      .attr("transform",
+        "translate(" + 0 + "," + 10 + ")" +
+        " " +
+        "rotate(" + -45 + ")"
+      )
+      .style("text-anchor", "end");
+
+  chart
+    .append("g")
+      .call(yAxis);
+
+  $(id + '-label').html('<h2 style="text-align: center; font-weight: bold; text-decoration: underline;">House Prices compared to San Diego Average</h2>');
 }
