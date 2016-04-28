@@ -1,3 +1,3 @@
 exports.view = function(req, res){
-  res.render('citysearch');
+  res.render('citysearch', req.query);
 }
