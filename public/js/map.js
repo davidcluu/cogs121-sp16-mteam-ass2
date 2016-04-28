@@ -331,7 +331,7 @@ function updateCrimeChart (data, id) {
 function updateHouseChart (data, id) {
   $(id).empty();
 
-  var range = d3.max( data.map(function(d){ return parseInt(d.cost); }) ) + 50000;
+  var range = 100000 * Math.ceil((d3.max( data.map(function(d){ return parseInt(d.cost); }) ))/100000) - 70000;
 
   var margin = {top: 0, right: 0, bottom: 50, left: 100},
       width = $('#crime').width() - margin.right - margin.left,
