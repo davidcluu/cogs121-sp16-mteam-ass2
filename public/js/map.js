@@ -107,11 +107,21 @@ $.getJSON('/data/sd.json', function(sd) {
               });
             })
             .css({
-              cursor: 'pointer'
+              'cursor': 'pointer'
             })
             .css({
-              fill: 'rgb(' + r + ',' + g + ',' + b + ')',
-              transition: '2.0s'
+              'fill': 'rgb(' + r + ',' + g + ',' + b + ')',
+              'transition': '2.0s'
+            })
+            .hover(function() {
+              $(this).css({
+                'fill': '#000',
+                'transition': '0.5s'
+              });
+            }, function() {
+              $(this).css({
+                'fill': 'rgb(' + r + ',' + g + ',' + b + ')'
+              });
             });
         })(keys[i], name);
       }
