@@ -12,9 +12,16 @@ exports.query = function (req, res) {
     if(err) {
       console.error("DB Query Error");
       console.error(err);
+      console.error("Trying reconnect");
 
-      res.sendStatus(500);
-      return;
+      req.dbclient.end();
+      req.dbclient.connect(function(err) {
+        if(err) {
+          console.error('DB Error: Could not connect to database');
+          res.sendStatus(500);
+          return
+        }
+      });
     }
 
     res.json(result.rows);
