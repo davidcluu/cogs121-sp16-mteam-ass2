@@ -179,3 +179,15 @@ footer {
 	width: 50%;
 	margin: 0 auto;
 }
+
+/* Autocomplete */
+.ui-autocomplete {
+  max-height: 100px;
+  overflow-y: auto;
+  /* prevent horizontal scrollbar */
+  overflow-x: hidden;
+}
+
+* html .ui-autocomplete {
+  height: 100px;
+}

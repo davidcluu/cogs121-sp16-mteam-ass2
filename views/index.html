@@ -1,31 +1,3 @@
-<head>
-  <meta charset="utf-8">
-  <title>jQuery UI Autocomplete - Scrollable results</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <style>
-  .ui-autocomplete {
-    max-height: 100px;
-    overflow-y: auto;
-    /* prevent horizontal scrollbar */
-    overflow-x: hidden;
-  }
- 
-  * html .ui-autocomplete {
-    height: 100px;
-  }
-  </style>
-  <script>
-  $.get('/autocomp', function(response) {
-
-    $( "#srch-term" ).autocomplete({
-      source: response.cities.neighborhood
-    });
-  });
-  </script>
-</head>
 <!-- nav bar -->
 <nav class="navbar navbar-light bg-faded">
   <div class="container-fluid">
@@ -64,9 +36,9 @@
 		</div>
 		
 		<div class="search-box">
-			<form class="form-search">
+			<form class="form-search" action="/citySearch">
 				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Search for Neighborhoods San Diego" name="srch-term" id="srch-term">
+					<input type="text" class="form-control" placeholder="Search for Neighborhoods San Diego" name="initNeighborhood" id="srch-term">
 					<div class="input-group-btn">
 						<button class="btn btn-default" type="submit">Find a City</button>
 					</div>
