@@ -1,3 +1,31 @@
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Autocomplete - Scrollable results</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+  .ui-autocomplete {
+    max-height: 100px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+  }
+ 
+  * html .ui-autocomplete {
+    height: 100px;
+  }
+  </style>
+  <script>
+  $.get('/autocomp', function(response) {
+
+    $( "#srch-term" ).autocomplete({
+      source: response.cities.neighborhood
+    });
+  });
+  </script>
+</head>
 <!-- nav bar -->
 <nav class="navbar navbar-light bg-faded">
 	<a class="navbar-brand" href="#">SAYFR</a>
@@ -21,7 +49,7 @@
 		<div class="slogan">
 			<p>Find out if your rent is dangerously low.</p>
 		</div>
-
+		
 		<div class="search-box">
 	        <form class="form-search">
 	        <div class="input-group">

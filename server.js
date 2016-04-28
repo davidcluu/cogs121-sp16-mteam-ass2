@@ -60,6 +60,7 @@ app.set('port', process.env.PORT || 3000);
 
 /* Routes */
 app.get('/', router.index.view);
+app.get('/autocomp', router.index.autocomp);
 app.get('/citysearch', router.citysearch.view);
 
 app.use('/delphidata', router.db.setup);
