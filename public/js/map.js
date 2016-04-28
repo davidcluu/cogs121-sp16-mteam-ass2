@@ -101,7 +101,9 @@ $.getJSON('/data/sd.json', function(sd) {
 
           $('.neighborhood.' + className)
             .click(function() {
+              $('.currentSelection').removeClass('currentSelection');
               changeNeighborhoods(displayName, crimes[displayName]);
+              $(this).addClass('currentSelection');
             })
             .css({
               'cursor': 'pointer'
@@ -112,7 +114,7 @@ $.getJSON('/data/sd.json', function(sd) {
             })
             .hover(function() {
               $(this).css({
-                'fill': '#000',
+                'fill': 'rgb(120,0,120)',
                 'transition': '0.5s'
               });
             }, function() {
@@ -125,6 +127,9 @@ $.getJSON('/data/sd.json', function(sd) {
 
       var neighborhoodName = $('#neighborhood').text();
       if (neighborhoodName) {
+        var className = neighborhoodName.replace(/\s+/g, '-').toLowerCase();
+        $('.neighborhood.' + className).addClass('currentSelection');
+
         changeNeighborhoods(neighborhoodName, crimes[neighborhoodName]);
       }
 
@@ -266,7 +271,7 @@ function updateCrimeChart (data, id) {
 
   var range = d3.max( data.map(function(d){ return parseInt(d.count); }) ) + 100;
 
-  var margin = {top: 0, right: 0, bottom: 50, left: 60},
+  var margin = {top: 0, right: 0, bottom: 50, left: 100},
       width = $('#crime').width() - margin.right - margin.left,
       height = ($(window).height() - $('#zipcode-crime').position().top) / 3 - margin.top - margin.bottom;
 
@@ -328,7 +333,7 @@ function updateHouseChart (data, id) {
 
   var range = d3.max( data.map(function(d){ return parseInt(d.cost); }) ) + 50000;
 
-  var margin = {top: 0, right: 0, bottom: 50, left: 60},
+  var margin = {top: 0, right: 0, bottom: 50, left: 100},
       width = $('#crime').width() - margin.right - margin.left,
       height = ($(window).height() - $('#zipcode-crime').position().top) / 2.5 - margin.top - margin.bottom;
 
