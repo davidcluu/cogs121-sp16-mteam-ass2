@@ -204,8 +204,8 @@ function changeNeighborhoods(displayName, crimes) {
     query.push("GROUP BY zip");
 
     $.getJSON(generateQueryURL('/delphidata', query), function(data) {
-      updateCrimeChart(data, '#zipcode-crime');
       updateHouseChart(housePrices, '#houseprices');
+      updateCrimeChart(data, '#zipcode-crime');
     });
   });
 }
