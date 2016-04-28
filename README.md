@@ -19,8 +19,8 @@
 
 * __TopoJSON__ was used to create an accurate map of San Diego in order to easily display crime and housing data in a more visual way.
 * __Bootstrap__ was used to create neat and aesthetic navigation for the application and to implement forms such as the search bar on the home page. For those on the front-end, we agreed that we were most familiar with Bootstrap and as such, could work more efficiently with its modular components. After reviewing other CSS frameworks, we found that Bootstrap had the components necessary to our application (like a navigation bar, search bar, table, etc.). Frameworks, like Semantic UI and Skeleton, did not have such components. While Bootstrap is arguably bulkier, we were able to pick and choose specific components to compile (with Less) and use.
-* __jQuery__ was used to implement the auto complete on the search bar, making it easier for the user to find the neighborhood they are looking for.
-
+* __jQuery (AJAX)__ was used to implement the loading bar and to facilitate the user interactions on the map. Besides the element of familiarity, jQuery's functions made it very easy build and create simple interactions like "onHover" and "onClick".
+* __jQuery UI__ was used to implement the auto complete on the search bar, making it easier for the user to find the neighborhood they are looking for.
 
 #Contributions
 
