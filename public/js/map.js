@@ -101,10 +101,7 @@ $.getJSON('/data/sd.json', function(sd) {
 
           $('.neighborhood.' + className)
             .click(function() {
-              console.log(displayName + ' ' + crimes[displayName]);
-              $.getJSON('/data/neighborhoodToZipcode.json', function(data) {
-                console.log(data[displayName]);
-              });
+              changeNeighborhoods(displayName);
             })
             .css({
               'cursor': 'pointer'
@@ -128,20 +125,7 @@ $.getJSON('/data/sd.json', function(sd) {
 
       var neighborhoodName = $('#neighborhood').text();
       if (neighborhoodName) {
-        $.getJSON('/data/neighborhoodToZipcode.json', function(map) {
-          var data = map[neighborhoodName];
-          if (data) {
-            if (data.cost == -1) {
-              console.error("No cost information for " + neighborhoodName); 
-            }
-            else {
-              $('#cost').append("<strong>Cost:</strong> $" + data.cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-            }
-          }
-          else {
-            console.error("No information about " + neighborhoodName); 
-          }
-        });
+        changeNeighborhoods(neighborhoodName);
       }
       else {
         console.log("No text"); 
@@ -151,6 +135,25 @@ $.getJSON('/data/sd.json', function(sd) {
     }
   });
 });
+
+
+function changeNeighborhoods(displayName) {
+  $.getJSON('/data/neighborhoodToZipcode.json', function(map) {
+    $('#neighborhood').text(displayName);
+    var data = map[displayName];
+    if (data) {
+      if (data.cost == -1) {
+        $('#cost').html("No cost information for " + neighborhoodName + "!");
+      }
+      else {
+        $('#cost').html("<strong>Cost:</strong> $" + data.cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+      }
+    }
+    else {
+      console.error("No information about " + neighborhoodName); 
+    }
+  });
+}
 
 
 function handleClass(d) {
