@@ -274,6 +274,10 @@ footer p{
   bottom: 0;
 }
 
+.init-message {
+  width: 50%;
+  margin: 30% auto;
+}
 /* Autocomplete */
 .ui-autocomplete {
   max-height: 100px;
