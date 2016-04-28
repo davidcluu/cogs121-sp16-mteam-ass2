@@ -1,66 +1,68 @@
 <!-- nav bar -->
 <nav class="navbar navbar-light bg-faded">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">SAYFR</a>
-    </div>
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">SAYFR</a>
+		</div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/#about">About</a></li>
-        <li><a href="/citysearch">Map</a></li>
-        <li><a href="/#help">Help</a><li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/#about">About</a></li>
+				<li><a href="/citysearch">Map</a></li>
+				<li><a href="/#help">Help</a>
+					<li>
+			</ul>
+		</div>
+		<!-- /.navbar-collapse -->
+	</div>
+	<!-- /.container-fluid -->
 </nav>
 <!-- end nav bar -->
 
 <!--header-->
 <div class="container">
 	<div class="header">
-		<video autoplay="" loop="" muted="" style="width: 100%;">
+		<video autoplay="" loop="" muted="" style="width: 100%;" poster="/img/sandiego.jpg">
 			<source src="/img/sandiego.mp4" type="video/mp4">
 		</video>
 		<div class="video-top">
-		<div class="slogan">
-			<p>Find out if you're living dangerously.</p>
-		</div>
-		
-		<div class="search-box">
-			<form class="form-search" action="/citySearch">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Search for Neighborhoods San Diego" name="initNeighborhood" id="srch-term">
-					<div class="input-group-btn">
-						<button class="btn btn-default" type="submit">Find a City</button>
+			<div class="slogan">
+				<p>Find out if you're living dangerously.</p>
+			</div>
+
+			<div class="search-box">
+				<form class="form-search">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Search for Neighborhoods in San Diego" name="srch-term" id="srch-term">
+						<div class="input-group-btn">
+							<button class="btn btn-primary" type="submit">Search</button>
+						</div>
 					</div>
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
-	</div>
 	</div>
 </div>
-	<!--header-->
+<!--header-->
 
-	<!--about-->
-	<div id="about">
-		<div class="container">
+<!--about-->
+<div id="about" class="info-row">
+	<div class="container">
 		<div class="row no-gutters">
 			<div class="col-sm-5 left-side">
-				<div class="about-description">
-					<h2>With SAYFR, Know Exactly What You're Paying For.</h2>
+				<div class="row-description">
+					<h2>Know Exactly What You're Paying For.</h2>
 					<br/>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-						dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-					<button class="btn btn-primary">Find a City</button>
+					<p>SAYFR stands for <strong>Safe Acquisition of Your Family Residence</strong>. We understand that safety and a price within budget don’t have to be mutually exclusive. With SAYFR, our mission is to help families, growing and existing, find their dream home in the San Diego area without having to sacrifice cost or safety. We’re here to help families like yours feel right at home!</p>
+					<a href="/citysearch"><button class="btn btn-primary">Find a Neighborhood</button></a>
 				</div>
 			</div>
 			<div class="col-sm-7">
@@ -72,6 +74,50 @@
 	</div>
 </div>
 
-<footer>&copy; Team M, 2016.</footer>
+<!--help-->
+<div id="help" class="info-row">
+	<div class="container">
+		<div class="row no-gutters">
+			<div class="col-sm-7">
+				<div class="left-side">
+					<img src="/img/landing-help.jpeg">
+				</div>
+			</div>
+			<div class="col-sm-5 right-side">
+				<div class="row-description">
+					<h2>Crossreference House Prices and Crime Rates</h2>
+					<br/>
+					<p>SAYFR is free and easy to use. There’s no fees you have to pay or accounts you have to make and log into. Simply search for a neighborhood you want above or head to our <a href=“/citysearch”>Map page</a> and select a neighborhood of your choice to browse. Hovering over neighborhoods on the map gives a quick overview of some of the stats in that area. To dive in deeper, simply click on the neighborhoods to get more statistics and compare with other neighborhoods in San Diego!</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--credit-->
+<div id="credit" class="info-row">
+	<div class="container">
+		<div class="row no-gutters">
+			<!-- <div class="col-sm-5 left-side">
+				<div class="row-description">
+					<h2>People 💜 Us!</h2>
+					<br/>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+						dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+				</div>
+			</div>
+			<div class="col-sm-7">
+				<div class="right-side">
+					<img src="/img/landing-about.jpeg">
+				</div>
+			</div> -->
+         <p>Special thanks to <a href="http://www.zillow.com/">Zillow&reg;</a> and <a href="http://delphi.ucsd.edu/">DELPHI</a> for making this application possible by providing us with their data! 💜</p>
+		</div>
+	</div>
+</div>
+
+<footer>
+	<p>&copy; COGS 121 Team M 🍓 Spring 2016.</p>
+</footer>
 
 <script src="/js/index.js"></script>

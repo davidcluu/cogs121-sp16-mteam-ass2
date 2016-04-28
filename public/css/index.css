@@ -20,7 +20,7 @@ body {
 	border-radius: 0px;
 	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
 	margin-bottom: 0;
-   font-weight: 600;
+   font-weight: 400;
 }
 
 /*index stuff*/
@@ -41,8 +41,12 @@ body {
   padding-left: 0;
 }
 
+#credit {
+   text-align: center;
+}
+
 .header {
-	background-color: #73C9E6;
+	background-color: #29B6F6;
 	height: 450px;
    position: relative;
    bottom: 0%;
@@ -78,19 +82,23 @@ body {
 	width: 400px;
 }
 
-#about {
+/* inefficient :/ */
+
+.info-row {
 	padding: 5% 15%;
 }
 
-
-#about img {
-	width: 100%;
-	float: right;
+.info-row img {
+   width: 100%;
+   float: right;
 }
 
+#help {
+   background-color: #81D4FA;
+   color: #fff;
+}
 
-
-.about-description {
+.row-description {
    top: 0;
 	padding-left: 5%;
 	padding-right: 7%;
@@ -98,8 +106,14 @@ body {
 
 footer {
    height: 60px;
-   background-color: #73C9E6;
+   background-color: #333;
    text-align: center;
+   font-weight: 400;
+}
+
+footer p{
+   padding-top: 20px;
+   color: #fff;
 }
 
 /*loader*/
@@ -116,7 +130,8 @@ footer {
   font-family: helvetica, arial, sans-serif;
   text-transform: uppercase;
   font-weight: 900;
-  color: rgb(120,196,222);
+  /*color: rgb(120,196,222);*/
+  color: #81D4FA;
   letter-spacing: 0.2em;
 }
 .loader::before, .loader::after {
@@ -124,7 +139,8 @@ footer {
   display: block;
   width: 15px;
   height: 15px;
-  background: rgb(120,196,222);
+  /*background: rgb(120,196,222);*/
+  background: #81D4FA;
   position: absolute;
   -webkit-animation: load .7s infinite alternate ease-in-out;
           animation: load .7s infinite alternate ease-in-out;
