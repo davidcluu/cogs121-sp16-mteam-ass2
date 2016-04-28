@@ -29,7 +29,7 @@
 * __David__
   * Worked on the back-end of the application, including the DELPHI database and the D3 map, as well as the map stylistically
 * __James__
-  * n/a
+  * Contributed to the design decisions writeup in the README.
 * __Lauren__
   * Brainstormed the design + functionalities of the application, worked on both the front-end and the back-end of the application as needed
 * __Marvin__
