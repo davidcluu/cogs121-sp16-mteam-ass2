@@ -1,50 +1,37 @@
 <!-- nav bar -->
 <nav class="navbar navbar-light bg-faded">
-	<a class="navbar-brand" href="/">SAYFR</a>
-	<ul class="nav navbar-nav navbar-right">
-		<li class="nav-item active">
-		 	<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="#">About</a>
-		</li>
-		<li class="nav-item ">
-			<a class="nav-link" href="#">Search Cities</a>
-		</li>
-	</ul>
-</nav>
-<!-- end nav bar -->
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">SAYFR</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/#about">About</a></li>
+        <li><a href="/citysearch">Map<span class="sr-only">(current)</span></a></li>
+        <li><a href="/#help">Help</a><li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav><!-- end nav bar -->
 
 <div class="row">
   <div id="map" class="col-md-6"></div>
   <div class="col-md-6">
-  		<div class="loader">Loading...</div>
+  	<div class="loader">Loading...</div>
 		<div class="container">
-			<div class="zip-codes">
-				<h2>La Jolla's associated zipcodes</h2>
-				<table class="table" align="center">
-					<thead>
-						<tr>
-					        <th>Zip Code</th>
-					        <th>Crime</th>
-					        <th>Rent</th>
-				        </tr>
-				    </thead>
-				    <tbody>
-				    	<tr>
-					    	<td>92037-92039</td>
-					    	<td>100</td>
-					    	<td>9000</td>
-					    </tr>
-				    </tbody>
-				    <tbody>
-				    	<tr>
-					    	<td>92092-92093</td>
-					    	<td>100</td>
-					    	<td>9000</td>
-					    </tr>
-				    </tbody>
-				</table>
+			<div class="region-data">
+				<h2 id="neighborhood">{{initNeighborhood}}</h2>
+				<hr>
+        <h3 id="cost"></h3>
 			</div>
 		</div>
   </div>

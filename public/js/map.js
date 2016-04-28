@@ -115,6 +115,28 @@ $.getJSON('/data/sd.json', function(sd) {
             });
         })(keys[i], name);
       }
+
+      var neighborhoodName = $('#neighborhood').text();
+      if (neighborhoodName) {
+        $.getJSON('/data/neighborhoodToZipcode.json', function(map) {
+          var data = map[neighborhoodName];
+          if (data) {
+            if (data.cost == -1) {
+              console.error("No cost information for " + neighborhoodName); 
+            }
+            else {
+              $('#cost').append("<strong>Cost:</strong> $" + data.cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            }
+          }
+          else {
+            console.error("No information about " + neighborhoodName); 
+          }
+        });
+      }
+      else {
+        console.log("No text"); 
+      }
+
       $('.loader').toggleClass('loaded');
     }
   });
