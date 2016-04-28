@@ -19,5 +19,10 @@ $.get('/autocomp', function(response) {
 
 /* On Ready */
 $(function() {
-
+  var neighborhoodName = $('#neighborhood').text();
+  if (neighborhoodName) {
+    $('#crime').html('<strong>Total Crimes Recorded:</strong>');
+    $('#cost').html('<strong>Average House Cost:</strong>');
+    $('#divider').removeClass('hidden');
+  }
 });

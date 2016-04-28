@@ -127,9 +127,6 @@ $.getJSON('/data/sd.json', function(sd) {
       if (neighborhoodName) {
         changeNeighborhoods(neighborhoodName, crimes[neighborhoodName]);
       }
-      else {
-        console.log("No text"); 
-      }
 
       $('.loader').toggleClass('loaded');
     }
@@ -140,6 +137,8 @@ $.getJSON('/data/sd.json', function(sd) {
 function changeNeighborhoods(displayName, crimes) {
   $.getJSON('/data/neighborhoodToZipcode.json', function(map) {
     $('#neighborhood').text(displayName);
+
+    $('#crime').html("<strong>Total Crimes Recorded:</strong> " + crimes);
 
     var data = map[displayName];
     var housePrices;
@@ -185,7 +184,7 @@ function changeNeighborhoods(displayName, crimes) {
       ]
     }
 
-    $('#crime').html("<strong>Total Crimes Recorded:</strong> " + crimes);
+    $('#divider').removeClass('hidden');
 
     var query = [
       "SELECT zip,COUNT(*)",
