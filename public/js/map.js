@@ -190,6 +190,8 @@ function changeNeighborhoods(displayName, crimes) {
     }
 
     $('#divider').removeClass('hidden');
+    $('#stats').removeClass('hidden');
+
 
     var query = [
       "SELECT zip,COUNT(*)",
