@@ -101,7 +101,7 @@ $.getJSON('/data/sd.json', function(sd) {
 
           $('.neighborhood.' + className)
             .click(function() {
-              changeNeighborhoods(displayName);
+              changeNeighborhoods(displayName, crimes[displayName]);
             })
             .css({
               'cursor': 'pointer'
@@ -125,7 +125,7 @@ $.getJSON('/data/sd.json', function(sd) {
 
       var neighborhoodName = $('#neighborhood').text();
       if (neighborhoodName) {
-        changeNeighborhoods(neighborhoodName);
+        changeNeighborhoods(neighborhoodName, crimes[neighborhoodName]);
       }
       else {
         console.log("No text"); 
@@ -137,9 +137,10 @@ $.getJSON('/data/sd.json', function(sd) {
 });
 
 
-function changeNeighborhoods(displayName) {
+function changeNeighborhoods(displayName, crimes) {
   $.getJSON('/data/neighborhoodToZipcode.json', function(map) {
     $('#neighborhood').text(displayName);
+
     var data = map[displayName];
     if (data) {
       if (data.cost == -1) {
@@ -152,6 +153,8 @@ function changeNeighborhoods(displayName) {
     else {
       console.error("No information about " + neighborhoodName); 
     }
+
+    $('#crime').html("<strong>Total Crimes:</strong> " + crimes);
   });
 }
 
