@@ -144,14 +144,14 @@ function changeNeighborhoods(displayName, crimes) {
     var data = map[displayName];
     if (data) {
       if (data.cost == -1) {
-        $('#cost').html("No cost information for " + neighborhoodName + "!");
+        $('#cost').html("No cost information for " + displayName + "!");
       }
       else {
         $('#cost').html("<strong>Cost:</strong> $" + data.cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
       }
     }
     else {
-      console.error("No information about " + neighborhoodName); 
+      console.error("No information about " + displayName); 
     }
 
     $('#crime').html("<strong>Total Crimes:</strong> " + crimes);
