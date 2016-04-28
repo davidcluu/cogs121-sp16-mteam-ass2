@@ -26,16 +26,25 @@
 <div class="container">
   <div class="row">
 
-    <div id="map" class="col-md-6" style="padding: 0"></div>
+    <div class="col-md-6">
+      <div id="map-nodata">
+        <div id="nodata" class="key">No Data</div>
+      </div>
+      <div id="map-key">
+        <div id="top-key" class="key">Less Crime</div>
+        <div id="bottom-key" class="key"> More Crime</div>
+      </div>
+      <div id="map" style="padding: 0"></div>
+    </div>
     <div class="col-md-6" style="padding: 0">
     	<div class="loader">Loading...</div>
   			<div class="region-data">
   				<h2 id="neighborhood">{{initNeighborhood}}</h2>
+          <h3 id="crime"><strong>Total Crimes Recorded:</strong></h3>
+          <h3 id="cost"><strong>Average House Cost:</strong></h3>
   				<hr>
-          <h3 id="crime"></h3>
           <div id="zipcode-crime-label"></div>
           <div id="zipcode-crime"></div>
-          <h3 id="cost"></h3>
           <div id="houseprices-label"></div>
           <div id="houseprices"></div>
 			</div>
@@ -46,3 +55,5 @@
 
 <script src="/js/index.js"></script>
 <script src="/js/map.js"></script>
+
+

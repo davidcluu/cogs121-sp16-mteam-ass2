@@ -158,7 +158,7 @@ function changeNeighborhoods(displayName, crimes) {
         $('#cost').html("No house cost information for " + displayName + "!");
       }
       else {
-        $('#cost').html("<strong>House Cost:</strong> $" + data.cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('#cost').html("<strong>Average House Cost:</strong> $" + data.cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         housePrices = [
           {
             cost: data.cost.toString(),
@@ -185,7 +185,7 @@ function changeNeighborhoods(displayName, crimes) {
       ]
     }
 
-    $('#crime').html("<strong>Total Crimes:</strong> " + crimes);
+    $('#crime').html("<strong>Total Crimes Recorded:</strong> " + crimes);
 
     var query = [
       "SELECT zip,COUNT(*)",
@@ -264,7 +264,7 @@ function updateCrimeChart (data, id) {
 
   var margin = {top: 0, right: 0, bottom: 50, left: 60},
       width = $('#crime').width() - margin.right - margin.left,
-      height = ($(window).height() - $('#zipcode-crime').position().top) / 2.5 - margin.top - margin.bottom;
+      height = ($(window).height() - $('#zipcode-crime').position().top) / 3 - margin.top - margin.bottom;
 
   var innerWidth  = width  - margin.left - margin.right;
   var innerHeight = height - margin.top  - margin.bottom;
@@ -293,7 +293,7 @@ function updateCrimeChart (data, id) {
     .attr("width", (innerWidth / data.length) - 10)
     .attr("y", function(d) { return innerHeight - (innerHeight*(d / range)); })
     .attr("height", function(d) { return innerHeight*(d / range); })
-    .style("fill", "#aaa");
+    .style("fill", "#6AC1DE");
 
   var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
   var yAxis = d3.svg.axis().scale(yScale).orient("left");
@@ -301,6 +301,7 @@ function updateCrimeChart (data, id) {
   chart
     .append("g")
       .attr("transform", "translate(" + 0 + "," + innerHeight + ")")
+      .style({ 'stroke': 'Black', 'fill': 'none', 'stroke-width': '1px' })
       .call(xAxis)
     .selectAll("text")
       .attr("transform",
@@ -312,9 +313,10 @@ function updateCrimeChart (data, id) {
 
   chart
     .append("g")
+      .style({ 'stroke': 'Black', 'fill': 'none', 'stroke-width': '1px' })
       .call(yAxis);
 
-  $(id + '-label').html('<h2 style="text-align: center; font-weight: bold; text-decoration: underline;">Zip Code vs. Crimes Committed</h2>');
+  $(id + '-label').html('<h2 style="text-align: center; font-weight: bold;">Zip Code vs. Crimes Recorded</h2>');
 }
 
 function updateHouseChart (data, id) {
@@ -353,7 +355,7 @@ function updateHouseChart (data, id) {
     .attr("width", (innerWidth / data.length) - 10)
     .attr("y", function(d) { return innerHeight - (innerHeight*(d / range)); })
     .attr("height", function(d) { return innerHeight*(d / range); })
-    .style("fill", "#aaa");
+    .style("fill", "#99D681");
 
   var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
   var yAxis = d3.svg.axis().scale(yScale).orient("left");
@@ -361,6 +363,7 @@ function updateHouseChart (data, id) {
   chart
     .append("g")
       .attr("transform", "translate(" + 0 + "," + innerHeight + ")")
+      .style({ 'stroke': 'Black', 'fill': 'none', 'stroke-width': '1px' })
       .call(xAxis)
     .selectAll("text")
       .attr("transform",
@@ -372,7 +375,8 @@ function updateHouseChart (data, id) {
 
   chart
     .append("g")
+      .style({ 'stroke': 'Black', 'fill': 'none', 'stroke-width': '1px' })
       .call(yAxis);
 
-  $(id + '-label').html('<h2 style="text-align: center; font-weight: bold; text-decoration: underline;">House Prices compared to San Diego Average</h2>');
+  $(id + '-label').html('<h2 style="text-align: center; font-weight: bold;">House Prices compared to San Diego Average</h2>');
 }

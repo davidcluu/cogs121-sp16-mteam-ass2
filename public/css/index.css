@@ -196,6 +196,38 @@ footer p{
 	margin: 0 auto;
 }
 
+#map-key {
+  position: absolute;
+  background: linear-gradient(to top, rgba(255,0,255,1), rgba(250,237,250,1));
+  width: 10px;
+  height: 25%;
+  margin-top: 45%;
+  margin-left: 10%;
+  z-index: 2;
+}
+
+#map-nodata {
+  position: absolute;
+  background-color: #e8e8e8;
+  width: 10px;
+  height: 20px;
+  margin-top: 40%;
+  margin-left: 10%;
+  z-index: 2;
+}
+
+.key {
+  padding-left: 30px;
+  width: 200px;
+}
+
+#bottom-key {
+  position: absolute;
+  width: 10px;
+  z-index: 3;
+  bottom: 0;
+}
+
 /* Autocomplete */
 .ui-autocomplete {
   max-height: 100px;
