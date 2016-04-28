@@ -23,18 +23,21 @@
   </div><!-- /.container-fluid -->
 </nav><!-- end nav bar -->
 
-<div class="row">
-  <div id="map" class="col-md-6"></div>
-  <div class="col-md-6">
-  	<div class="loader">Loading...</div>
-		<div class="container">
-			<div class="region-data">
-				<h2 id="neighborhood">{{initNeighborhood}}</h2>
-				<hr>
-        <h3 id="cost"></h3>
-        <h3 id="crime"></h3>
+<div class="container">
+  <div class="row">
+
+    <div id="map" class="col-md-6" style="padding: 0"></div>
+    <div class="col-md-6" style="padding: 0">
+    	<div class="loader">Loading...</div>
+  			<div class="region-data">
+  				<h2 id="neighborhood">{{initNeighborhood}}</h2>
+  				<hr>
+          <h3 id="cost"></h3>
+          <h3 id="crime"></h3>
+          <div id="zipcode-crime"></div>
 			</div>
 		</div>
+
   </div>
 </div>
 
