@@ -136,6 +136,11 @@ $.getJSON('/data/sd.json', function(sd) {
 
 function changeNeighborhoods(displayName, crimes) {
   $.getJSON('/data/neighborhoodToZipcode.json', function(map) {
+    var init = $('#init-message');
+    if (init) {
+      init.addClass('hidden');
+    }
+
     $('#neighborhood').text(displayName);
 
     $('#crime').html("<strong>Total Crimes Recorded:</strong> " + crimes);
